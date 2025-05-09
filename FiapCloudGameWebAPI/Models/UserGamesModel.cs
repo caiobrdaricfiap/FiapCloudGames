@@ -9,14 +9,14 @@ namespace FiapCloudGameWebAPI.Models
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey("Usuario")]
-        public int UsuarioId { get; set; }
-        public required UserModel Usuario { get; set; }
+        [ForeignKey("User")]
+        public int UserId { get; set; }
+        public required UserModel User { get; set; }
 
-        [ForeignKey("Jogo")]
+        [ForeignKey("Game")]
         public int GameId { get; set; }
-        public required GamesModel Jogo { get; set; }
+        public required GamesModel Game { get; set; }
 
-        public DateTime DataAquisicao { get; set; } = DateTime.UtcNow;
+        public DateTime AcquisitionDate { get; set; } = DateTime.UtcNow;
     }
 }

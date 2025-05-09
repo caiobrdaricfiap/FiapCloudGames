@@ -11,14 +11,14 @@ namespace FiapCloudGameWebAPI.Models
 
         [Required]
         [MaxLength(100)]
-        public required string Nome { get; set; }
+        public required string GameName { get; set; }
 
         [Required]
-        public required string Genero { get; set; }
+        public required string GameGender { get; set; }
 
-        public DateTime DataLancamento { get; set; }
+        public DateTime ReleaseDate { get; set; }
 
-        // Relação muitos-para-muitos com usuários
+        // Many-to-many relationship with users
         public required ICollection<GamesModel> UserGames { get; set; }
     }
 }
