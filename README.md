@@ -67,3 +67,10 @@ Antes de começar a fazer modificações, é importante criar uma nova branch pa
 git checkout -b nome-da-branch
 ```
 
+## Comandos mais utilizados no EntityFramework Core.
+
+1. Criar Migração:
+  Add-Migration NomeDaMigracao
+
+2. Atualizar a base de dados conforme a ultima migration.
+  Update-Database
