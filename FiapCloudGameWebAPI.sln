@@ -5,7 +5,7 @@ VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapCloudGameWebAPI", "FiapCloudGameWebAPI\FiapCloudGameWebAPI.csproj", "{B77FE528-A1C8-4922-8DA9-CFF585C1B4B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapCloudGameWebAPI.Domain", "FiapCloudGames.Domain\FiapCloudGameWebAPI.Domain.csproj", "{17905816-23E0-4672-96B1-1E054A60C070}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapCloudGameWebAPI.Domain", "FiapCloudGamesWebAPI.Domain\FiapCloudGameWebAPI.Domain.csproj", "{17905816-23E0-4672-96B1-1E054A60C070}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapCloudGameWebAPI.Infrastructure", "FiapCloudGameWebAPI.Infrastructure\FiapCloudGameWebAPI.Infrastructure.csproj", "{50355A86-147D-4BB4-B394-924DEEE7DD7C}"
 EndProject

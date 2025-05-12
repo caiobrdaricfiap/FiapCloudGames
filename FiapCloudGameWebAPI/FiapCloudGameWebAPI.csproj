@@ -14,12 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< Updated upstream
-    <Folder Include="Controllers\" />
-=======
-    <ProjectReference Include="..\FiapCloudGames.Domain\FiapCloudGameWebAPI.Domain.csproj" />
+    <ProjectReference Include="..\FiapCloudGamesWebAPI.Domain\FiapCloudGameWebAPI.Domain.csproj" />
     <ProjectReference Include="..\FiapCloudGameWebAPI.Infrastructure\FiapCloudGameWebAPI.Infrastructure.csproj" />
->>>>>>> Stashed changes
   </ItemGroup>
 
 </Project>
