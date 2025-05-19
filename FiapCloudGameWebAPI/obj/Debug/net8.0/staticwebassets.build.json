@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "HFBFLztL8Erod6l+gXGNYpkP3UZfOBd13ROq8M009xY=",
+  "Hash": "y/PWIpl+dzVRqQVoTsMO3h8sKoCZSD+w0Rk6C/tRru4=",
   "Source": "FiapCloudGameWebAPI",
   "BasePath": "_content/FiapCloudGameWebAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

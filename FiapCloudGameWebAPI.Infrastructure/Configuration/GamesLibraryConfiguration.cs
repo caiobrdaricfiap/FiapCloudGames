@@ -13,9 +13,9 @@ namespace FiapCloudGames.Infrastructure.Configuration
             builder.Property(u => u.UserId).HasColumnType("INT").IsRequired();
             builder.Property(u => u.GameId).HasColumnType("INT").IsRequired();
 
-            builder.HasOne(p => p.User)
-                .WithMany(u => u.Games)
-                .HasPrincipalKey(u => u.Id);
+            //builder.HasOne(p => p.User)
+            //    .WithMany(u => u.Games)
+            //    .HasPrincipalKey(u => u.Id);
 
             builder.HasOne(p => p.Game)
                 .WithMany(u => u.Users)
