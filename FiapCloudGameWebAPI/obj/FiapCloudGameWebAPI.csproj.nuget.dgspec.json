@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj": {}
+    "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj": {
+    "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj",
+        "projectUniqueName": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj",
         "projectName": "FiapCloudGameWebAPI.Domain",
-        "projectPath": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj",
-        "packagesPath": "C:\\Users\\andbl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\obj\\",
+        "projectPath": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj",
+        "packagesPath": "C:\\Users\\BRDARIC-KING\\.nuget\\packages\\",
+        "outputPath": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGamesWebAPI.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\andbl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\BRDARIC-KING\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -69,20 +69,20 @@
         }
       }
     },
-    "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj": {
+    "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj",
         "projectName": "FiapCloudGameWebAPI.Infrastructure",
-        "projectPath": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\andbl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGameWebAPI.Infrastructure\\obj\\",
+        "projectPath": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\BRDARIC-KING\\.nuget\\packages\\",
+        "outputPath": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\andbl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\BRDARIC-KING\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -97,8 +97,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj": {
-                "projectPath": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj"
+              "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj": {
+                "projectPath": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj"
               }
             }
           }
@@ -156,20 +156,20 @@
         }
       }
     },
-    "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj": {
+    "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj",
+        "projectUniqueName": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj",
         "projectName": "FiapCloudGameWebAPI",
-        "projectPath": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj",
-        "packagesPath": "C:\\Users\\andbl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGameWebAPI\\obj\\",
+        "projectPath": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj",
+        "packagesPath": "C:\\Users\\BRDARIC-KING\\.nuget\\packages\\",
+        "outputPath": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\andbl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\BRDARIC-KING\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -184,11 +184,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj": {
-                "projectPath": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj"
+              "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj": {
+                "projectPath": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj"
               },
-              "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\andbl\\OneDrive\\Documentos\\0_estudos\\arquitetura de softwares .Net FIAP\\Tech challenge FIAP\\1_MEUGIT\\FiapCloudGames\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj"
+              "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj": {
+                "projectPath": "C:\\Desenv\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj"
               }
             }
           }
