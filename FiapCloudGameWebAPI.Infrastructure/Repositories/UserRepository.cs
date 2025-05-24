@@ -11,7 +11,6 @@ namespace FiapCloudGames.Infrastructure.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly ApplicationDbContext _dbContext;
-
         #region Construtor
         public UserRepository(ApplicationDbContext applicationContext)
         {
@@ -23,15 +22,17 @@ namespace FiapCloudGames.Infrastructure.Repositories
         #region Métodos
         public async Task<UserModel> Adicionar(UserModel usuario)
         {
-            usuario.HashPassword = CriptografiaUtils.CriptografarSenha(usuario.HashPassword);
+            // Gere o salt
+            string salt = CriptografiaUtils.GeraSalt(12);
+            // Gere o hash usando a senha e o salt
+            usuario.Salt = salt;
+            usuario.HashPassword = CriptografiaUtils.HashPassWord(usuario.HashPassword, salt);
 
             await _dbContext.Users.AddAsync(usuario);
             await _dbContext.SaveChangesAsync();
 
             return usuario;
-
         }
-
         public async Task<List<UserModel>> BuscarTodosUsuarios()
         {
             return await _dbContext.Users.ToListAsync();
@@ -85,7 +86,10 @@ namespace FiapCloudGames.Infrastructure.Repositories
 
             return true;
         }
-
+        public async Task<UserModel?> BuscarPorEmailAsync(string email)
+        {
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
 
 
         //VERIFICAR DEPOIS 
