@@ -17,11 +17,36 @@ namespace FiapCloudGameWebAPI.Controllers
         private readonly UserRepository _userRepository;
         private readonly IConfiguration _configuration;
 
+        #region Construtor
+        /// <summary>
+        /// Construtor que injeta o repositório de usuários e as configurações.
+        /// </summary>
         public AuthController(UserRepository userRepository, IConfiguration configuration)
         {
             _userRepository = userRepository;
             _configuration = configuration;
         }
+        #endregion
+
+        #region Operações
+
+        /// <summary>
+        /// Realiza o login e retorna o token JWT.
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de requisição:
+        /// 
+        ///  
+        ///     {
+        ///         "username": "seu@email.com",
+        ///         "password": "SuaSenha123!"
+        ///     }
+        /// 
+        /// O token JWT retornado deve ser usado no botão Authorize do topo do Swagger.
+        /// </remarks>
+        /// <param name="model">Dados de login</param>
+        /// <returns>Token JWT</returns>
+        /// 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
@@ -38,6 +63,9 @@ namespace FiapCloudGameWebAPI.Controllers
             return Ok(new { token });
         }
 
+        /// <summary>
+        /// Gera o token JWT para o usuário autenticado.
+        /// </summary>
         private string GenerateJwtToken(UserModel user)
         {
             var claims = new[]
@@ -48,8 +76,11 @@ namespace FiapCloudGameWebAPI.Controllers
                 new Claim(ClaimTypes.Role, user.Role.ToString())
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var jwtKey = _configuration["Jwt:Key"];
+            if (string.IsNullOrEmpty(jwtKey))
+                throw new InvalidOperationException("A chave JWT não está configurada no appsettings.json.");
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)); var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
@@ -60,5 +91,7 @@ namespace FiapCloudGameWebAPI.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        #endregion
     }
 }

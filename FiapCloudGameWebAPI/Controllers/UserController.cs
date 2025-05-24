@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using FiapCloudGameWebAPI.Domain.Interfaces.Repositories;
 using FiapCloudGameWebAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,7 +33,9 @@ namespace FiapCloudGameWebAPI.Controllers
         /// Retorna todos os usuários cadastrados.
         /// </summary>
         /// <returns>Lista de usuários</returns>
-        [HttpGet]
+        [HttpGet ]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult<List<UserModel>>> BuscarTodosUsuarios()
         {
             List<UserModel> usuarios = await _userRepository.BuscarTodosUsuarios();
@@ -45,6 +48,7 @@ namespace FiapCloudGameWebAPI.Controllers
         /// <param name="id">ID do usuário</param>
         /// <returns>Usuário encontrado</returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<UserModel>> BuscarPorId(int id)
         {
             UserModel usuario = await _userRepository.BuscarPorId(id);
@@ -72,6 +76,8 @@ namespace FiapCloudGameWebAPI.Controllers
         /// <param name="id">ID do usuário a ser atualizado</param>
         /// <returns>Usuário atualizado</returns>
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult<UserModel>> AtualizarUsuario([FromBody] UserModel userModel, int id)
         {
             userModel.Id = id;
@@ -87,6 +93,8 @@ namespace FiapCloudGameWebAPI.Controllers
         /// <param name="id">ID do usuário a ser removido</param>
         /// <returns>Indica se o usuário foi removido com sucesso</returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult<bool>> Apagar(int id)
         {
             bool apagado = await _userRepository.Apagar(id);
