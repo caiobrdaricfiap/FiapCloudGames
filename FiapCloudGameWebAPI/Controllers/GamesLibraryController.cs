@@ -1,4 +1,5 @@
 ﻿using FiapCloudGameWebAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TechChallenge.Controllers
@@ -38,6 +39,8 @@ namespace TechChallenge.Controllers
         /// <param name="userId">ID do usuário</param>
         /// <returns>Lista de jogos do usuário</returns>
         [HttpGet("user/{userId}")]
+        [Authorize(Roles = "Admin")]
+
         public IActionResult GetByUser(int userId)
         {
             var items = _library.Where(x => x.UserId == userId).ToList();

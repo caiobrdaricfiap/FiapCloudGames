@@ -1,51 +1,106 @@
 using FiapCloudGames.Infrastructure.Data;
-using FiapCloudGameWebAPI.IoC;
+using FiapCloudGames.Infrastructure.Repositories;
+using FiapCloudGameWebAPI.Domain.Interfaces.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Text.Json.Serialization;
-using System.Reflection;
-using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Text;
+
+// Garante que os claims do JWT não sejam mapeados automaticamente para nomes diferentes
+System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers().AddJsonOptions(options =>
-{
-    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-});
-;
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddAuthorization();
+
+// Configuração do Entity Framework e conexão com o banco de dados SQL Server
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+// Configuração da autenticação JWT e mensagem customizada para 401 Unauthorized
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        var jwtKey = builder.Configuration["Jwt:Key"];
+        if (string.IsNullOrEmpty(jwtKey))
+            throw new InvalidOperationException("A chave JWT não está configurada no appsettings.json.");
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+        };
+        options.Events = new JwtBearerEvents
+        {
+           
+            OnForbidden = context =>
+            {
+                context.Response.StatusCode = 403;
+                context.Response.ContentType = "application/json";
+                var result = System.Text.Json.JsonSerializer.Serialize(new { message = "Usuário não autorizado a acessar este recurso." });
+                return context.Response.WriteAsync(result);
+            }
+        };
+    });
+
+// Configuração do Swagger/OpenAPI com suporte a autenticação JWT
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "FiapCloudGameWebAPI",
-        Version = "v1"
+        Version = "v1",
+        Description = "Para autenticar, utilize o endpoint /api/auth/login e cole o token JWT no botão Authorize."
     });
-    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Autentique-se usando o endpoint /api/auth/login. Cole apenas o token JWT gerado aqui."
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
 });
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")),
-    ServiceLifetime.Scoped);
-
-
-builder.Services.AddDependencyInjection();
-
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
-app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "FiapCloudGameWebAPI v1");
-    c.RoutePrefix = "swagger";
-});
 
+// Ativa o Swagger UI apenas em ambiente de desenvolvimento
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 
-await app.RunAsync();
+app.Run();

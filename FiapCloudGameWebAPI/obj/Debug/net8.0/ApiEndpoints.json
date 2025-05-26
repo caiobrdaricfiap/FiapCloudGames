@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "FiapCloudGameWebAPI.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FiapCloudGameWebAPI.Domain.Models.LoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TechChallenge.Controllers.GamesController",
     "Method": "GetAll",
     "RelativePath": "api/Games",

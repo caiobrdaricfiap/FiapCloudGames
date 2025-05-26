@@ -1,4 +1,5 @@
 ﻿using FiapCloudGameWebAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TechChallenge.Controllers
@@ -26,6 +27,8 @@ namespace TechChallenge.Controllers
         /// <param name="id">Id do jogo</param>
         /// <returns>Jogo correspondente ou NotFound</returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
+
         public IActionResult GetById(int id)
         {
             var game = _games.FirstOrDefault(g => g.Id == id);
@@ -38,6 +41,8 @@ namespace TechChallenge.Controllers
         /// <param name="game">Objeto com dados do jogo</param>
         /// <returns>O jogo criado com o novo Id</returns>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
+
         public IActionResult Create(GameModel game)
         {
             game.Id = _games.Count + 1;
@@ -52,6 +57,8 @@ namespace TechChallenge.Controllers
         /// <param name="updated">Dados atualizados do jogo</param>
         /// <returns>Status da operação</returns>
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+
         public IActionResult Update(int id, GameModel updated)
         {
             var game = _games.FirstOrDefault(g => g.Id == id);
@@ -68,6 +75,8 @@ namespace TechChallenge.Controllers
         /// <param name="id">Id do jogo a ser removido</param>
         /// <returns>Status da operação</returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+
         public IActionResult Delete(int id)
         {
             var game = _games.FirstOrDefault(g => g.Id == id);

@@ -19,7 +19,7 @@ namespace FiapCloudGameWebAPI.Models
         [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\|])[A-Za-z\d!@#$%^&*()_+{}\[\]:;<>,.?~\\|]+$",
            ErrorMessage = "A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial! ")]
         public string HashPassword { get; set; }
-
+        public string Salt { get; set; }
         public bool Active { get; set; } = true;
         public UserRole Role { get; set; }
         public DateTime RegisterDate { get; set; } = DateTime.UtcNow;

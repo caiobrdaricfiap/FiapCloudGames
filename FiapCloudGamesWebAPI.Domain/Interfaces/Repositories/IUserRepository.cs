@@ -9,7 +9,7 @@ namespace FiapCloudGameWebAPI.Domain.Interfaces.Repositories
         Task<UserModel> BuscarPorId(int id);
         Task<UserModel> Adicionar(UserModel usuario);
         Task<UserModel> Atualizar(UserModel usuario, int id);
-
+        Task<UserModel?> BuscarPorEmailAsync(string email);
         Task<bool> Apagar(int id);
     }
 }
