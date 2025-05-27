@@ -40,7 +40,6 @@ namespace FiapCloudGamesWebAPI.Application.Services
             var salt = CriptografiaUtils.GeraSalt(12);
             var hashPassword = CriptografiaUtils.HashPassWord(dto.Password, salt);
 
-            var role = UserRole.User;
             var active = true;
             var registerDate = DateTimeHelper.BrasiliaTime();
 

@@ -600,10 +600,8 @@ C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin
 C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin\Debug\net8.0\FiapCloudGamesWebAPI.Application.dll
 C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin\Debug\net8.0\FiapCloudGameWebAPI.Domain.dll
 C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin\Debug\net8.0\FiapCloudGameWebAPI.Infrastructure.dll
-C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin\Debug\net8.0\FiapCloudGamesWebAPI.Application.pdb
 C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin\Debug\net8.0\FiapCloudGameWebAPI.Domain.pdb
 C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin\Debug\net8.0\FiapCloudGameWebAPI.Infrastructure.pdb
 C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\obj\Debug\net8.0\scopedcss\bundle\FiapCloudGameWebAPI.styles.css
@@ -621,3 +619,5 @@ C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\obj
 C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\obj\Debug\net8.0\FiapCloudGameWebAPI.xml
 C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\obj\Debug\net8.0\FiapCloudGameWebAPI.genruntimeconfig.cache
 C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\obj\Debug\net8.0\ref\FiapCloudGameWebAPI.dll
+C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin\Debug\net8.0\FiapCloudGameWebAPI.Application.dll
+C:\Users\Felipe\Desktop\Pós FIAP\Projeto\FiapCloudGames\FiapCloudGameWebAPI\bin\Debug\net8.0\FiapCloudGameWebAPI.Application.pdb

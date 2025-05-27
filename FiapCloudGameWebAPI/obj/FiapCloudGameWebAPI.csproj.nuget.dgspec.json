@@ -4,12 +4,12 @@
     "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGamesWebAPI.Application.csproj": {
+    "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGameWebAPI.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGamesWebAPI.Application.csproj",
-        "projectName": "FiapCloudGamesWebAPI.Application",
-        "projectPath": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGamesWebAPI.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGameWebAPI.Application.csproj",
+        "projectName": "FiapCloudGameWebAPI.Application",
+        "projectPath": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGameWebAPI.Application.csproj",
         "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\obj\\",
         "projectStyle": "PackageReference",
@@ -268,8 +268,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGamesWebAPI.Application.csproj": {
-                "projectPath": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGamesWebAPI.Application.csproj"
+              "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGameWebAPI.Application.csproj": {
+                "projectPath": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGameWebAPI.Application.csproj"
               },
               "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj": {
                 "projectPath": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj"
