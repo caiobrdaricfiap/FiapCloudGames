@@ -20,25 +20,18 @@ namespace FiapCloudGames.Infrastructure.Repositories
         #endregion
 
         #region Métodos
-        public async Task<UserModel> Adicionar(UserModel usuario)
+        public async Task<UserModel> AddAsync(UserModel usuario)
         {
-            // Gere o salt
-            string salt = CriptografiaUtils.GeraSalt(12);
-            // Gere o hash usando a senha e o salt
-            usuario.Salt = salt;
-            usuario.HashPassword = CriptografiaUtils.HashPassWord(usuario.HashPassword, salt);
-
             await _dbContext.Users.AddAsync(usuario);
             await _dbContext.SaveChangesAsync();
-
             return usuario;
         }
-        public async Task<List<UserModel>> BuscarTodosUsuarios()
+        public async Task<List<UserModel>> GetAllAsync()
         {
             return await _dbContext.Users.ToListAsync();
         }
 
-        public async Task<UserModel> BuscarPorId(int id)
+        public async Task<UserModel> GetDetailsByIdAsync(int id)
         {
             UserModel usuarioPorId = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -50,23 +43,12 @@ namespace FiapCloudGames.Infrastructure.Repositories
             return usuarioPorId;
         }
 
-        public async Task<UserModel> Atualizar(UserModel usuario, int id)
+        public async Task<UserModel> UpdateAsync(UserModel usuario, int id)
         {
-            UserModel usuarioPorId = await BuscarPorId(id);
-
+            var usuarioPorId = await GetDetailsByIdAsync(id);
 
             if (usuarioPorId == null)
-            {
-                throw new Exception($"Usuario para o ID: {id} não foi encontrado");
-            }
-
-            usuarioPorId.Name = usuario.Name;
-            usuarioPorId.Email = usuario.Email;
-            usuarioPorId.HashPassword = CriptografiaUtils.CriptografarSenha(usuarioPorId.HashPassword);
-            usuarioPorId.Active = usuario.Active;
-            usuarioPorId.Role = usuario.Role;
-            usuarioPorId.RegisterDate = usuario.RegisterDate;
-
+                throw new Exception($"Usuário para o ID: {id} não foi encontrado");
 
             _dbContext.Users.Update(usuarioPorId);
             await _dbContext.SaveChangesAsync();
@@ -74,19 +56,18 @@ namespace FiapCloudGames.Infrastructure.Repositories
             return usuarioPorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            UserModel usuarioPorId = await BuscarPorId(id);
-
+            var usuarioPorId = await GetDetailsByIdAsync(id);
             if (usuarioPorId == null)
-                throw new Exception($"O usuario {id} não foi encontrado no banco de dados");
+                return false;
 
             _dbContext.Users.Remove(usuarioPorId);
             await _dbContext.SaveChangesAsync();
-
             return true;
         }
-        public async Task<UserModel?> BuscarPorEmailAsync(string email)
+
+        public async Task<UserModel?> GetByEmailAsync(string email)
         {
             return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
         }

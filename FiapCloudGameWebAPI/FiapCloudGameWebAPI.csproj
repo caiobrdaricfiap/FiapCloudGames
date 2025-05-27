@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FiapCloudGamesWebAPI.Application\FiapCloudGamesWebAPI.Application.csproj" />
     <ProjectReference Include="..\FiapCloudGamesWebAPI.Domain\FiapCloudGameWebAPI.Domain.csproj" />
     <ProjectReference Include="..\FiapCloudGameWebAPI.Infrastructure\FiapCloudGameWebAPI.Infrastructure.csproj" />
   </ItemGroup>

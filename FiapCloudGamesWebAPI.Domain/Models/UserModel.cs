@@ -36,6 +36,21 @@ namespace FiapCloudGameWebAPI.Models
             RegisterDate = registerDate;
             //Games = games;
         }
+
+        public void Update(string name, string email, bool active, UserRole role, string? hashPassword = null, string? salt = null)
+        {
+            Name = name;
+            Email = email;
+            Active = active;
+            Role = role;
+
+            // Só atualiza senha/salt se ambos forem informados
+            if (!string.IsNullOrWhiteSpace(hashPassword) && !string.IsNullOrWhiteSpace(salt))
+            {
+                HashPassword = hashPassword;
+                Salt = salt;
+            }
+        }
     }
 }
 
