@@ -62,7 +62,7 @@ namespace FiapCloudGamesWebAPI.Application.Services
 
         public async Task<List<UserResponseDto>> GetAllAsync()
         {
-            var users = await _userRepository.GetAllAsync();
+            var users = await _userRepository.GetByConditionAsync(u => true);
             return users.Select(u => new UserResponseDto
             {
                 Id = u.Id,
@@ -76,7 +76,7 @@ namespace FiapCloudGamesWebAPI.Application.Services
 
         public async Task<UserResponseDto?> GetByIdAsync(int id)
         {
-            var user = await _userRepository.GetDetailsByIdAsync(id);
+            var user = await _userRepository.GetAsync(id);
             if (user == null) return null;
 
             return new UserResponseDto
@@ -92,7 +92,7 @@ namespace FiapCloudGamesWebAPI.Application.Services
 
         public async Task<UserResponseDto?> UpdateAsync(int id, UserUpdateDto dto)
         {
-            var user = await _userRepository.GetDetailsByIdAsync(id);
+            var user = await _userRepository.GetAsync(id);
             if (user == null) return null;
 
             string? hashPassword = null, salt = null;
@@ -104,7 +104,7 @@ namespace FiapCloudGamesWebAPI.Application.Services
 
             user.Update(dto.Name, dto.Email, dto.Active, dto.Role, hashPassword, salt);
 
-            await _userRepository.UpdateAsync(user, id); // agora só salva, não altera nada!
+            await _userRepository.UpdateAsync(user);
 
             return new UserResponseDto
             {
@@ -119,7 +119,7 @@ namespace FiapCloudGamesWebAPI.Application.Services
 
         public async Task<bool> DeleteAsync(int id)
         {
-            var user = await _userRepository.GetDetailsByIdAsync(id);
+            var user = await _userRepository.GetAsync(id);
             if (user == null)
                 return false;
 
