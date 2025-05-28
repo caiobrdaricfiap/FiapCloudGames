@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapCloudGameWebAPI.Domain"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapCloudGameWebAPI.Infrastructure", "FiapCloudGameWebAPI.Infrastructure\FiapCloudGameWebAPI.Infrastructure.csproj", "{50355A86-147D-4BB4-B394-924DEEE7DD7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapCloudGameWebAPI.Application", "FiapCloudGamesWebAPI.Application\FiapCloudGameWebAPI.Application.csproj", "{AF8E31A9-D5A7-436A-8F68-90818745EBB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapCloudGameWebAPI.Tests", "FiapCloudGameWebAPI.Tests\FiapCloudGameWebAPI.Tests.csproj", "{826F313E-59BB-4476-9A5A-E57B066DC7DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{50355A86-147D-4BB4-B394-924DEEE7DD7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50355A86-147D-4BB4-B394-924DEEE7DD7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50355A86-147D-4BB4-B394-924DEEE7DD7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF8E31A9-D5A7-436A-8F68-90818745EBB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF8E31A9-D5A7-436A-8F68-90818745EBB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF8E31A9-D5A7-436A-8F68-90818745EBB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF8E31A9-D5A7-436A-8F68-90818745EBB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{826F313E-59BB-4476-9A5A-E57B066DC7DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{826F313E-59BB-4476-9A5A-E57B066DC7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{826F313E-59BB-4476-9A5A-E57B066DC7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{826F313E-59BB-4476-9A5A-E57B066DC7DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

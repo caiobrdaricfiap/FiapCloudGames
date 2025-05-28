@@ -8,8 +8,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "FiapCloudGameWebAPI.Domain.Models.LoginModel",
+        "Name": "dto",
+        "Type": "FiapCloudGamesWebAPI.Application.DTOs.Auth.LoginRequestDto",
         "IsRequired": true
       }
     ],
@@ -34,8 +34,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "game",
-        "Type": "FiapCloudGameWebAPI.Models.GameModel",
+        "Name": "dto",
+        "Type": "FiapCloudGamesWebAPI.Application.DTOs.Game.GameCreateDto",
         "IsRequired": true
       }
     ],
@@ -71,8 +71,8 @@
         "IsRequired": true
       },
       {
-        "Name": "updated",
-        "Type": "FiapCloudGameWebAPI.Models.GameModel",
+        "Name": "dto",
+        "Type": "FiapCloudGamesWebAPI.Application.DTOs.Game.GameUpdateDto",
         "IsRequired": true
       }
     ],
@@ -113,8 +113,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "item",
-        "Type": "FiapCloudGameWebAPI.Models.GamesLibraryModel",
+        "Name": "dto",
+        "Type": "FiapCloudGamesWebAPI.Application.DTOs.GamesLibrary.GamesLibraryCreateDto",
         "IsRequired": true
       }
     ],
@@ -162,7 +162,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[FiapCloudGameWebAPI.Models.UserModel, FiapCloudGameWebAPI.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[FiapCloudGamesWebAPI.Application.DTOs.User.UserResponseDto, FiapCloudGameWebAPI.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -174,29 +174,19 @@
   },
   {
     "ContainingType": "FiapCloudGameWebAPI.Controllers.UserController",
-    "Method": "Cadastrar",
+    "Method": "Register",
     "RelativePath": "api/User",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userModel",
-        "Type": "FiapCloudGameWebAPI.Models.UserModel",
+        "Name": "dto",
+        "Type": "FiapCloudGamesWebAPI.Application.DTOs.User.UserRegisterDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "FiapCloudGameWebAPI.Models.UserModel",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "FiapCloudGameWebAPI.Controllers.UserController",
@@ -214,7 +204,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FiapCloudGameWebAPI.Models.UserModel",
+        "Type": "FiapCloudGamesWebAPI.Application.DTOs.User.UserResponseDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -233,8 +223,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userModel",
-        "Type": "FiapCloudGameWebAPI.Models.UserModel",
+        "Name": "dto",
+        "Type": "FiapCloudGamesWebAPI.Application.DTOs.User.UserUpdateDto",
         "IsRequired": true
       },
       {
@@ -245,7 +235,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FiapCloudGameWebAPI.Models.UserModel",
+        "Type": "FiapCloudGamesWebAPI.Application.DTOs.User.UserResponseDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -257,7 +247,7 @@
   },
   {
     "ContainingType": "FiapCloudGameWebAPI.Controllers.UserController",
-    "Method": "Apagar",
+    "Method": "Delete",
     "RelativePath": "api/User/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -269,16 +259,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Boolean",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   }
 ]

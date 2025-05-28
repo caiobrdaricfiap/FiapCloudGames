@@ -1,4 +1,6 @@
-﻿using FiapCloudGameWebAPI.Models;
+﻿using FiapCloudGamesWebAPI.Application.DTOs.GamesLibrary;
+using FiapCloudGamesWebAPI.Application.Services;
+using FiapCloudGameWebAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,26 +13,38 @@ namespace TechChallenge.Controllers
     [Route("api/[controller]")]
     public class GamesLibraryController : ControllerBase
     {
-        private static List<GamesLibraryModel> _library = new();
+        private readonly GamesLibraryService _gamesLibraryService;
+
+        #region Constructor
+
+        public GamesLibraryController(GamesLibraryService gamesLibraryService)
+        {
+            _gamesLibraryService = gamesLibraryService;
+        }
+
+        #endregion
         #region CRUD
         /// <summary>
         /// Retorna todos os registros da biblioteca de jogos.
         /// </summary>
         /// <returns>Lista completa da biblioteca</returns>
         [HttpGet]
-        public IActionResult GetAll() => Ok(_library);
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _gamesLibraryService.GetAllAsync();
+            return Ok(result);
+        }
 
         /// <summary>
         /// Adiciona um item à biblioteca de jogos.
         /// </summary>
-        /// <param name="item">Item contendo usuário, jogo e data de aquisição</param>
+        /// <param name="dto">Item contendo usuário, jogo e data de aquisição</param>
         /// <returns>Item adicionado com ID gerado</returns>
         [HttpPost]
-        public IActionResult AddToLibrary(GamesLibraryModel item)
+        public async Task<IActionResult> AddToLibrary([FromBody] GamesLibraryCreateDto dto)
         {
-            item.Id = _library.Count + 1;
-            _library.Add(item);
-            return CreatedAtAction(nameof(GetAll), new { id = item.Id }, item);
+            var result = await _gamesLibraryService.AddAsync(dto);
+            return CreatedAtAction(nameof(GetAll), new { id = result.Id }, result);
         }
 
         /// <summary>
@@ -40,11 +54,10 @@ namespace TechChallenge.Controllers
         /// <returns>Lista de jogos do usuário</returns>
         [HttpGet("user/{userId}")]
         [Authorize(Roles = "Admin")]
-
-        public IActionResult GetByUser(int userId)
+        public async Task<IActionResult> GetByUser(int userId)
         {
-            var items = _library.Where(x => x.UserId == userId).ToList();
-            return Ok(items);
+            var result = await _gamesLibraryService.GetByUserAsync(userId);
+            return Ok(result);
         }
 
         /// <summary>
@@ -53,10 +66,10 @@ namespace TechChallenge.Controllers
         /// <param name="gameId">ID do jogo</param>
         /// <returns>Lista de usuários que possuem o jogo</returns>
         [HttpGet("game/{gameId}")]
-        public IActionResult GetByGame(int gameId)
+        public async Task<IActionResult> GetByGame(int gameId)
         {
-            var items = _library.Where(x => x.GameId == gameId).ToList();
-            return Ok(items);
+            var result = await _gamesLibraryService.GetByGameAsync(gameId);
+            return Ok(result);
         }
         #endregion
     }

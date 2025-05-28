@@ -1,6 +1,8 @@
 using FiapCloudGames.Infrastructure.Data;
 using FiapCloudGames.Infrastructure.Repositories;
+using FiapCloudGamesWebAPI.Application.Services;
 using FiapCloudGameWebAPI.Domain.Interfaces.Repositories;
+using FiapCloudGameWebAPI.IoC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -16,8 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<UserRepository>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddDependencyInjection();
 
 // Configuração da autenticação JWT e mensagem customizada para 401 Unauthorized
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

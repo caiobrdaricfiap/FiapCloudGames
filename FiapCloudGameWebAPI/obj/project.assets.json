@@ -1529,6 +1529,20 @@
           }
         }
       },
+      "FiapCloudGameWebAPI.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "FiapCloudGameWebAPI.Domain": "1.0.0",
+          "FiapCloudGameWebAPI.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FiapCloudGameWebAPI.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FiapCloudGameWebAPI.Application.dll": {}
+        }
+      },
       "FiapCloudGameWebAPI.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -4209,6 +4223,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "FiapCloudGameWebAPI.Application/1.0.0": {
+      "type": "project",
+      "path": "../FiapCloudGamesWebAPI.Application/FiapCloudGameWebAPI.Application.csproj",
+      "msbuildProject": "../FiapCloudGamesWebAPI.Application/FiapCloudGameWebAPI.Application.csproj"
+    },
     "FiapCloudGameWebAPI.Domain/1.0.0": {
       "type": "project",
       "path": "../FiapCloudGamesWebAPI.Domain/FiapCloudGameWebAPI.Domain.csproj",
@@ -4222,6 +4241,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "FiapCloudGameWebAPI.Application >= 1.0.0",
       "FiapCloudGameWebAPI.Domain >= 1.0.0",
       "FiapCloudGameWebAPI.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.0",
@@ -4233,42 +4253,49 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kauã\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Felipe\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kauã\\FiapCloudGames\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj",
       "projectName": "FiapCloudGameWebAPI",
-      "projectPath": "C:\\Users\\Kauã\\FiapCloudGames\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj",
-      "packagesPath": "C:\\Users\\Kauã\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kauã\\FiapCloudGames\\FiapCloudGameWebAPI\\obj\\",
+      "projectPath": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGameWebAPI\\FiapCloudGameWebAPI.csproj",
+      "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGameWebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Kauã\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Kauã\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj": {
-              "projectPath": "C:\\Users\\Kauã\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj"
+            "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGameWebAPI.Application.csproj": {
+              "projectPath": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Application\\FiapCloudGameWebAPI.Application.csproj"
             },
-            "C:\\Users\\Kauã\\FiapCloudGames\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Kauã\\FiapCloudGames\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj"
+            "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj": {
+              "projectPath": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGamesWebAPI.Domain\\FiapCloudGameWebAPI.Domain.csproj"
+            },
+            "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Felipe\\Desktop\\Pós FIAP\\Projeto\\FiapCloudGames\\FiapCloudGameWebAPI.Infrastructure\\FiapCloudGameWebAPI.Infrastructure.csproj"
             }
           }
         }
@@ -4283,7 +4310,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -4333,7 +4360,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

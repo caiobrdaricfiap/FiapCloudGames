@@ -1,4 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
+using FiapCloudGames.Infrastructure.Repositories;
+using FiapCloudGamesWebAPI.Application.DTOs.User;
+using FiapCloudGamesWebAPI.Application.Services;
 using FiapCloudGameWebAPI.Domain.Interfaces.Repositories;
 using FiapCloudGameWebAPI.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -14,16 +17,16 @@ namespace FiapCloudGameWebAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserRepository _userRepository;
+        private readonly UserService _userService;
 
         #region Construtor
         /// <summary>
-        /// Construtor que injeta o repositório de usuários.
+        /// Construtor que injeta o service de usuários.
         /// </summary>
-        /// <param name="userRepository">Repositório de usuários</param>
-        public UserController(IUserRepository userRepository)
+        /// <param name="userService">Service de usuários</param>
+        public UserController(UserService userService)
         {
-            _userRepository = userRepository;
+            _userService = userService;
         }
         #endregion
 
@@ -35,10 +38,9 @@ namespace FiapCloudGameWebAPI.Controllers
         /// <returns>Lista de usuários</returns>
         [HttpGet ]
         [Authorize(Roles = "Admin")]
-
-        public async Task<ActionResult<List<UserModel>>> BuscarTodosUsuarios()
+        public async Task<ActionResult<List<UserResponseDto>>> BuscarTodosUsuarios()
         {
-            List<UserModel> usuarios = await _userRepository.BuscarTodosUsuarios();
+            var usuarios = await _userService.GetAllAsync();
             return Ok(usuarios);
         }
 
@@ -49,9 +51,9 @@ namespace FiapCloudGameWebAPI.Controllers
         /// <returns>Usuário encontrado</returns>
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<UserModel>> BuscarPorId(int id)
+        public async Task<ActionResult<UserResponseDto>> BuscarPorId(int id)
         {
-            UserModel usuario = await _userRepository.BuscarPorId(id);
+            var usuario = await _userService.GetByIdAsync(id);
             if (usuario == null)
                 return NotFound($"Usuário com ID {id} não encontrado.");
             return Ok(usuario);
@@ -60,28 +62,33 @@ namespace FiapCloudGameWebAPI.Controllers
         /// <summary>
         /// Cadastra um novo usuário.
         /// </summary>
-        /// <param name="userModel">Dados do usuário a ser cadastrado</param>
+        /// <param name="dto">Dados do usuário a ser cadastrado</param>
         /// <returns>Usuário cadastrado</returns>
         [HttpPost]
-        public async Task<ActionResult<UserModel>> Cadastrar([FromBody] UserModel userModel)
+        public async Task<IActionResult> Register([FromBody] UserRegisterDto dto)
         {
-            UserModel usuario = await _userRepository.Adicionar(userModel);
-            return Ok(usuario);
+            try
+            {
+                var user = await _userService.RegisterAsync(dto);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         /// <summary>
         /// Atualiza um usuário existente pelo ID.
         /// </summary>
-        /// <param name="userModel">Dados atualizados do usuário</param>
+        /// <param name="dto">Dados atualizados do usuário</param>
         /// <param name="id">ID do usuário a ser atualizado</param>
         /// <returns>Usuário atualizado</returns>
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
-
-        public async Task<ActionResult<UserModel>> AtualizarUsuario([FromBody] UserModel userModel, int id)
+        public async Task<ActionResult<UserResponseDto>> AtualizarUsuario([FromBody] UserUpdateDto dto, int id)
         {
-            userModel.Id = id;
-            UserModel usuario = await _userRepository.Atualizar(userModel, id);
+            var usuario = await _userService.UpdateAsync(id, dto);
             if (usuario == null)
                 return NotFound($"Usuário com ID {id} não encontrado para atualização.");
             return Ok(usuario);
@@ -94,13 +101,12 @@ namespace FiapCloudGameWebAPI.Controllers
         /// <returns>Indica se o usuário foi removido com sucesso</returns>
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
-
-        public async Task<ActionResult<bool>> Apagar(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            bool apagado = await _userRepository.Apagar(id);
+            var apagado = await _userService.DeleteAsync(id);
             if (!apagado)
                 return NotFound($"Usuário com ID {id} não encontrado para remoção.");
-            return Ok(apagado);
+            return Ok(new { apagado });
         }
 
         #endregion
