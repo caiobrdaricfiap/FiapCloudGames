@@ -9,6 +9,7 @@ using FiapCloudGameWebAPI.Models;
 using FiapCloudGameWebAPI.Domain.Utils;
 using FiapCloudGamesWebAPI.Application.Services;
 using FiapCloudGamesWebAPI.Application.DTOs.Auth;
+using FiapCloudGameWebAPI.Domain.Interfaces.Repositories;
 
 namespace FiapCloudGameWebAPI.Controllers
 {
@@ -17,14 +18,14 @@ namespace FiapCloudGameWebAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly AuthService _authService;
-        private readonly UserRepository _userRepository;
         private readonly IConfiguration _configuration;
+        private readonly IUserRepository _userRepository;
 
         #region Construtor
         /// <summary>
-        /// Construtor que injeta o repositório de usuários e as configurações.
+        /// Construtor que injeta o serviço de autenticação, repositório de usuários e as configurações.
         /// </summary>
-        public AuthController(AuthService authService, UserRepository userRepository, IConfiguration configuration)
+        public AuthController(AuthService authService, IUserRepository userRepository, IConfiguration configuration)
         {
             _authService = authService;
             _userRepository = userRepository;
@@ -40,7 +41,6 @@ namespace FiapCloudGameWebAPI.Controllers
         /// <remarks>
         /// Exemplo de requisição:
         /// 
-        ///  
         ///     {
         ///         "email": "seu@email.com",
         ///         "password": "SuaSenha123!"
@@ -50,7 +50,6 @@ namespace FiapCloudGameWebAPI.Controllers
         /// </remarks>
         /// <param name="dto">Dados de login</param>
         /// <returns>Token JWT and User Data</returns>
-        /// 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto dto)
         {
@@ -68,6 +67,7 @@ namespace FiapCloudGameWebAPI.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
         #endregion
     }
 }
