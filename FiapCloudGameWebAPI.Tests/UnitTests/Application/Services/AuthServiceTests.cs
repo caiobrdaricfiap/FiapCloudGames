@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using FiapCloudGames.Domain.Enums;
 using FiapCloudGameWebAPI.Domain.Utils;
 
-namespace FiapCloudGameWebAPI.Tests
+namespace FiapCloudGameWebAPI.Tests.UnitTests.Application.Services
 {
     public class AuthServiceTests
     {

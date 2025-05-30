@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace FiapCloudGameWebAPI.Tests
+namespace FiapCloudGameWebAPI.Tests.UnitTests.Application.Services
 {
     public class GameServiceTests
     {

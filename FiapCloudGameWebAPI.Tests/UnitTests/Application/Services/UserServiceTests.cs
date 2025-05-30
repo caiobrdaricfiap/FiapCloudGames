@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FiapCloudGameWebAPI.Tests
+namespace FiapCloudGameWebAPI.Tests.UnitTests.Application.Services
 {
     public class UserServiceTests
     {
