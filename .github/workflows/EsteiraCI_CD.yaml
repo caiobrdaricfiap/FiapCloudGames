@@ -29,7 +29,7 @@ jobs:
         run: dotnet build --no-restore --configuration Release
 
       - name: Executar testes
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test ./FiapCloudGameWebAPI.Tests/FiapCloudGameWebAPI.Tests.csproj
 
   deploy:
     name: Deploy para Azure
