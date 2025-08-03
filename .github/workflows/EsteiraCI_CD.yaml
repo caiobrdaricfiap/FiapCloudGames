@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Publicar projeto
-        run: dotnet publish ./FiapCloudGamesWebAPI.Application/FiapCloudGameWebAPI.Application.csproj -c Release -o ./publis
+        run: dotnet publish ./FiapCloudGamesWebAPI.Application/FiapCloudGameWebAPI.Application.csproj -c Release -o ./publish
        
 
       - name: Deploy para Azure Web App
