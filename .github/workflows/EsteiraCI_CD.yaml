@@ -42,6 +42,10 @@ jobs:
       - name: Checkout codigo
         uses: actions/checkout@v4
 
+      - name: Exibir conteúdo da pasta publicada
+        run: |
+              ls -R ./publish
+
       - name: Publicar projeto
         run: dotnet publish ./FiapCloudGamesWebAPI.Application/FiapCloudGameWebAPI.Application.csproj -c Release -o ./publish
        
