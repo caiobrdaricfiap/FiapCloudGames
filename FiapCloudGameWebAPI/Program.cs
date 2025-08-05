@@ -107,7 +107,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapGet("/", () => "API FiapCloudGameWebAPI está rodando!");
 // Configura a porta dinâmica exigida pela Azure Linux
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 app.Urls.Add($"http://*:{port}");

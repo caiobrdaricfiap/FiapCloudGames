@@ -8,90 +8,25 @@ using Microsoft.AspNetCore.Mvc;
 namespace TechChallenge.Controllers
 {
     /// <summary>
-    /// Controller responsável pelo gerenciamento dos jogos.
+    /// Endpoint simples para verificar se a API está online.
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class GamesController : ControllerBase
+    public class PingController : ControllerBase
     {
-        private readonly GameService _gameService;
-
-        #region Construtor
-        public GamesController(GameService gameService)
+        public PingController()
         {
-            _gameService = gameService;
         }
-        #endregion
-
-        #region CRUD
+        #region GET
 
         /// <summary>
-        /// Retorna todos os jogos cadastrados.
+        /// Retorna uma resposta simples indicando que a API está no ar.
         /// </summary>
-        /// <returns>Lista de jogos</returns>
+        /// <returns>"pong"</returns>
         [HttpGet]
-        [Authorize(Roles = "Admin,User")]
-        public async Task<IActionResult> GetAll()
+        public IActionResult Get()
         {
-            var games = await _gameService.GetAllAsync();
-            return Ok(games);
-        }
-
-        /// <summary>
-        /// Retorna um jogo pelo seu Id.
-        /// </summary>
-        /// <param name="id">Id do jogo</param>
-        /// <returns>Jogo correspondente ou NotFound</returns>
-        [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var game = await _gameService.GetByIdAsync(id);
-            if (game == null)
-                return NotFound("Jogo não encontrado.");
-            return Ok(game);
-        }
-
-        /// <summary>
-        /// Cria um novo jogo.
-        /// </summary>
-        /// <param name="dto">Objeto com dados do jogo</param>
-        /// <returns>O jogo criado com o novo Id</returns>
-        [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create([FromBody] GameCreateDto dto)
-        {
-            var created = await _gameService.CreateAsync(dto);
-            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
-        }
-
-        /// <summary>
-        /// Atualiza um jogo existente pelo Id.
-        /// </summary>
-        /// <param name="id">Id do jogo a ser atualizado</param>
-        /// <param name="dto">Dados atualizados do jogo</param>
-        /// <returns>Status da operação</returns>
-        [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update(int id, [FromBody] GameUpdateDto dto)
-        {
-            var updated = await _gameService.UpdateAsync(id, dto);
-            if (!updated) return NotFound("Jogo não encontrado.");
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Remove um jogo pelo Id.
-        /// </summary>
-        /// <param name="id">Id do jogo a ser removido</param>
-        /// <returns>Status da operação</returns>
-        [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var deleted = await _gameService.DeleteAsync(id);
-            if (!deleted) return NotFound("Jogo não encontrado.");
-            return NoContent();
+            return Ok(new { message = "pong" });
         }
 
         #endregion
