@@ -18,9 +18,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Injeção de dependências personalizada
 builder.Services.AddDependencyInjection();
 
-// Configuração da autenticação JWT e mensagem customizada para 401 Unauthorized
+// Configuração da autenticação JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -38,6 +39,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
         };
+
         options.Events = new JwtBearerEvents
         {
             OnForbidden = context =>
@@ -59,6 +61,7 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1",
         Description = "Para autenticar, utilize o endpoint /api/auth/login e cole o token JWT no botão Authorize."
     });
+
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -68,6 +71,7 @@ builder.Services.AddSwaggerGen(c =>
         In = ParameterLocation.Header,
         Description = "Autentique-se usando o endpoint /api/auth/login. Cole apenas o token JWT gerado aqui."
     });
+
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -82,6 +86,7 @@ builder.Services.AddSwaggerGen(c =>
             Array.Empty<string>()
         }
     });
+
     var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
@@ -92,9 +97,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-// Ativa o Swagger UI apenas em ambiente de desenvolvimento
-
-
+// Ativa o Swagger sempre (inclusive em produção)
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -103,4 +106,10 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers
+app.MapControllers();
+
+// Configura a porta dinâmica exigida pela Azure Linux
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Add($"http://*:{port}");
+
+app.Run();
