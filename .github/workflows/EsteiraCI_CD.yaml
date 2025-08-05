@@ -11,10 +11,9 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    # runs-on: windows-latest
 
     steps:
-      - name: Checkout codigo
+      - name: Checkout código
         uses: actions/checkout@v4
 
       - name: Instalar .NET
@@ -22,7 +21,7 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Restaurar dependencias
+      - name: Restaurar dependências
         run: dotnet restore
 
       - name: Build do projeto
@@ -37,18 +36,15 @@ jobs:
     runs-on: windows-latest
     if: github.ref == 'refs/heads/main'
 
-
     steps:
-      - name: Checkout codigo
+      - name: Checkout código
         uses: actions/checkout@v4
-
-      - name: Exibir conte�do da pasta publicada
-        run: |
-              ls -R ./publish
 
       - name: Publicar projeto
         run: dotnet publish ./FiapCloudGamesWebAPI.Application/FiapCloudGameWebAPI.Application.csproj -c Release -o ./publish
-       
+
+      - name: Exibir conteúdo da pasta publicada
+        run: ls -R ./publish
 
       - name: Deploy para Azure Web App
         uses: azure/webapps-deploy@v2
@@ -56,4 +52,3 @@ jobs:
           app-name: fiapgames-app
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./publish
-
