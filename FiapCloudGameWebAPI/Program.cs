@@ -9,24 +9,25 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
-// Garante que os claims do JWT n„o sejam mapeados automaticamente para nomes diferentes
+// Garante que os claims do JWT n√£o sejam mapeados automaticamente para nomes diferentes
 System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ConfiguraÁ„o do Entity Framework e conex„o com o banco de dados SQL Server
+// Configura√ß√£o do Entity Framework e conex√£o com o banco de dados SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Inje√ß√£o de depend√™ncias personalizada
 builder.Services.AddDependencyInjection();
 
-// ConfiguraÁ„o da autenticaÁ„o JWT e mensagem customizada para 401 Unauthorized
+// Configura√ß√£o da autentica√ß√£o JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         var jwtKey = builder.Configuration["Jwt:Key"];
         if (string.IsNullOrEmpty(jwtKey))
-            throw new InvalidOperationException("A chave JWT n„o est· configurada no appsettings.json.");
+            throw new InvalidOperationException("A chave JWT n√£o est√° configurada no appsettings.json.");
 
         options.TokenValidationParameters = new TokenValidationParameters
         {
@@ -38,28 +39,29 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
         };
+
         options.Events = new JwtBearerEvents
         {
-           
             OnForbidden = context =>
             {
                 context.Response.StatusCode = 403;
                 context.Response.ContentType = "application/json";
-                var result = System.Text.Json.JsonSerializer.Serialize(new { message = "Usu·rio n„o autorizado a acessar este recurso." });
+                var result = System.Text.Json.JsonSerializer.Serialize(new { message = "Usu√°rio n√£o autorizado a acessar este recurso." });
                 return context.Response.WriteAsync(result);
             }
         };
     });
 
-// ConfiguraÁ„o do Swagger/OpenAPI com suporte a autenticaÁ„o JWT
+// Configura√ß√£o do Swagger/OpenAPI com suporte a autentica√ß√£o JWT
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "FiapCloudGameWebAPI",
         Version = "v1",
-        Description = "Para autenticar, utilize o endpoint /api/auth/login e cole o token JWT no bot„o Authorize."
+        Description = "Para autenticar, utilize o endpoint /api/auth/login e cole o token JWT no bot√£o Authorize."
     });
+
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -69,6 +71,7 @@ builder.Services.AddSwaggerGen(c =>
         In = ParameterLocation.Header,
         Description = "Autentique-se usando o endpoint /api/auth/login. Cole apenas o token JWT gerado aqui."
     });
+
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -83,6 +86,7 @@ builder.Services.AddSwaggerGen(c =>
             Array.Empty<string>()
         }
     });
+
     var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
@@ -93,12 +97,9 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-// Ativa o Swagger UI apenas em ambiente de desenvolvimento
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Ativa o Swagger sempre (inclusive em produ√ß√£o)
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
@@ -107,4 +108,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Configura a porta din√¢mica exigida pela Azure Linux
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Add($"http://*:{port}");
+
 app.Run();
+
