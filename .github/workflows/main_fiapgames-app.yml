@@ -52,4 +52,5 @@ jobs:
           app-name: 'fiapgames-app'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_353E9D0881B54A7891ECE57DBD83263B }}
+
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
